@@ -24,51 +24,51 @@
         </div>
 
         <div id="panel-recientes" class="content-panel active">
-            <h2>Archivador de Canciones</h2>
-            <div class="project-grid" id="lista-proyectos-grid">
-                <div class="folder-card new-project" onclick="abrirModalNuevoChart()">
-                    <div class="folder-icon">➕</div>
-                    <h3>Nuevo Chart</h3>
-                </div>
+            <div class="panel-header">
+                <h1 class="panel-title">Tus Proyectos Archivados</h1>
+                <p class="panel-subtitle">Charts guardados en la memoria local de este navegador.</p>
             </div>
+            <div class="folder-grid" id="lista-proyectos-grid">
+                </div>
         </div>
 
         <div id="panel-ajustes" class="content-panel">
-            <h2>Configuración del Editor</h2>
-            
-            <div class="settings-block">
-                <span class="settings-label">🔍 Modo Zoom (Estilo PC para Android)</span>
-                <div class="zoom-slider-container">
-                    <input type="range" id="setting-zoom" class="zoom-slider" min="0.3" max="1" step="0.05" value="0.65" oninput="cambiarZoomDesdeAjustes(this.value)">
-                    <span id="zoom-val-display" style="font-weight: bold; font-size: 13px; color: #ff4b2b; width: 35px; text-align: right;">0.65</span>
-                </div>
+            <div class="panel-header">
+                <h1 class="panel-title">Configuración del Editor</h1>
+                <p class="panel-subtitle">Personaliza la apariencia visual y comportamiento táctil.</p>
             </div>
-
-            <div class="settings-theme-container">
-                <div class="theme-select-card" id="theme-dark-btn" onclick="setTheme('dark')">
-                    <div class="theme-icon">🌙</div>
-                    <div>Modo Oscuro</div>
+            <div class="settings-list">
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-name">Tema de Interfaz</div>
+                        <div class="setting-desc">Elige la paleta cromática general del entorno de trabajo.</div>
+                    </div>
+                    <div class="theme-selector-row">
+                        <div class="theme-select-card" id="theme-light-btn" onclick="setTheme('light')">☀️ Claro</div>
+                        <div class="theme-select-card active-theme" id="theme-dark-btn" onclick="setTheme('dark')">🌙 Oscuro</div>
+                    </div>
                 </div>
-                <div class="theme-select-card active-theme" id="theme-light-btn" onclick="setTheme('light')">
-                    <div class="theme-icon">☀️</div>
-                    <div>Modo Claro</div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-name">Zoom de la Grilla (Escala)</div>
+                        <div class="setting-desc">Ajusta el tamaño del área de notas para pantallas pequeñas.</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; width: 45%;">
+                        <input type="range" id="setting-zoom" min="0.4" max="1" step="0.05" value="0.65" style="flex:1;" oninput="cambiarZoomDesdeAjustes(this.value)">
+                        <span id="zoom-val-display" style="font-family: monospace; font-weight: bold; min-width: 35px; color: var(--text-main);">0.65</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div id="panel-creditos" class="content-panel">
-            <h2>Créditos del Proyecto</h2>
-            <div class="credits-list">
-                <div class="credit-card owner">
-                    <div class="credit-header">
-                        <span class="credit-name">Gamer Countryballs</span>
-                        <span class="credit-tag">Creador Original</span>
-                    </div>
-                    <p class="credit-desc">Creador de el chart editor de android para v slice.</p>
-                    <div class="credit-links">
-                        <a href="https://www.youtube.com/@GamerCountryballs" target="_blank">Ir al Canal</a>
-                    </div>
-                </div>
+            <div class="panel-header">
+                <h1 class="panel-title">Créditos de Desarrollo</h1>
+                <p class="panel-subtitle">Equipo y herramientas detrás del prototipo móvil.</p>
+            </div>
+            <div class="credits-card">
+                <h3>FNF V-Slice Mobile Chart Editor</h3>
+                <p style="margin-top:8px; line-height: 1.5;">Diseñado para emular con máxima fidelidad la estética y funciones del motor oficial de Friday Night Funkin' (V-Slice Edition), optimizando la ergonomía táctil en smartphones.</p>
             </div>
         </div>
     </div>
@@ -80,7 +80,6 @@
                 <div class="dropdown-menu">
                     <div class="dropdown-item" onclick="menuNuevoChart()">Nuevo Chart</div>
                     <div class="dropdown-item" onclick="menuAbrirChart()">abrir chart</div>
-                    <div class="dropdown-item" onclick="menuArchivarChart()">archivar chart</div>
                     <div class="dropdown-item" onclick="menuGuardarChartTo()">guardar chart a...</div>
                     <div class="dropdown-divider"></div>
                     <div class="dropdown-item" onclick="menuExit()">Exit</div>
@@ -99,13 +98,13 @@
                 <div class="panel-section-title">Controles</div>
                 <button class="left-play-btn" id="btn-play-pause" onclick="togglePlayPause()">Reproducir (>)</button>
                 
-                <div style="margin-top: 5px;" class="panel-section-title">Ajustes de Velocidad</div>
+                <div style="margin-top: 12px;" class="panel-section-title">Ajustes de Velocidad</div>
                 <div class="speed-input-box">
                     <label for="speed-dummy-input">Speed Chart</label>
                     <input type="number" id="speed-dummy-input" class="speed-input-field" min="1" value="1" placeholder="Ej: 2.5">
                 </div>
 
-                <div style="margin-top: 10px;" class="panel-section-title">Tracks de Voces</div>
+                <div style="margin-top: 15px;" class="panel-section-title">Tracks de Voces</div>
                 <div class="audio-box">
                     <div class="audio-box-title">👹 Audio Enemigo</div>
                     <div class="audio-controls-row">
@@ -118,17 +117,6 @@
                         <div class="audio-wave-placeholder" id="track-player-label">No Player Voice</div>
                     </div>
                 </div>
-
-                <div style="margin-top: 10px;" class="panel-section-title">Herramientas de Nota</div>
-                <div class="note-tools-box">
-                    <button id="btn-tool-d" class="btn-d" 
-                        onmousedown="activarModoD()" onmouseup="desactivarModoD()" 
-                        ontouchstart="activarModoD()" ontouchend="desactivarModoD()">D</button>
-                    <div class="btn-group">
-                        <button onclick="ajustarLongitudNota(1)">▲</button>
-                        <button onclick="ajustarLongitudNota(-1)">▼</button>
-                    </div>
-                </div>
             </div>
 
             <div class="chart-editor-right" id="scroll-workspace" onscroll="manejarScrollManual()">
@@ -136,8 +124,16 @@
                     <div class="grid-half oponent-side" id="cols-oponente"></div>
                     <div class="grid-half player-side" id="cols-jugador"></div>
                 </div>
+                <div id="playback-line"></div>
             </div>
-            <div id="playback-line"></div>
+
+            <div class="control-panel-right">
+                <div class="panel-section-title" style="text-align: center; margin-bottom: 15px;">Longitud del Sustain</div>
+                <div class="sustain-actions-wrapper">
+                    <button class="sustain-btn btn-recortar" onclick="ajustarLongitudNota(-1)">▲ Recortar</button>
+                    <button class="sustain-btn btn-extender" onclick="ajustarLongitudNota(1)">▼ Extender</button>
+                </div>
+            </div>
         </div>
 
         <div class="bottom-playback-bar">
@@ -146,35 +142,68 @@
         </div>
     </div>
 
-    <div id="modal-nuevo-chart" class="modal-overlay">
-        <div class="modal-box">
-            <div id="step-1" class="modal-step active">
-                <h3>Datos de la Nueva Song</h3>
-                <div class="form-grid">
-                    <div class="form-group"><label>Nombre de la Song</label><input type="text" id="song-name" value="Deboy"></div>
-                    <div class="form-group"><label>BPM Fiel</label><input type="number" id="song-bpm" value="160"></div>
-                    <div class="form-group"><label>Creador</label><input type="text" id="song-author" value="Deiby"></div>
-                    <div class="form-group"><label>Charter</label><input type="text" id="song-charter" value="Deiby"></div>
+    <div class="modal-overlay" id="modal-nuevo-chart">
+        <div class="modal-window">
+            <div class="modal-step active" id="step-1">
+                <div class="modal-header">
+                    <h2>Nuevo Chart (Paso 1 de 2)</h2>
+                    <span class="close-modal-btn" onclick="cerrarModalNuevoChart()">✕</span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nombre de la Canción</label>
+                        <input type="text" id="song-name" class="modal-input" value="Bopeebo" placeholder="Ej: Dadbattle">
+                    </div>
+                    <div class="form-group-row">
+                        <div class="form-group" style="flex:1;">
+                            <label>BPM</label>
+                            <input type="number" id="song-bpm" class="modal-input" value="100" min="20" max="400">
+                        </div>
+                        <div class="form-group" style="flex:1;">
+                            <label>Autor / Compositor</label>
+                            <input type="text" id="song-author" class="modal-input" value="Kawai Sprite">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Charter</label>
+                        <input type="text" id="song-charter" class="modal-input" value="Deiby">
+                    </div>
                 </div>
                 <div class="modal-buttons">
                     <button class="btn btn-cancel" onclick="cerrarModalNuevoChart()">Cancelar</button>
-                    <button class="btn btn-confirm" onclick="irAPaso2()">Siguiente</button>
+                    <button class="btn btn-confirm" onclick="irAPaso2()">Siguiente Paso</button>
                 </div>
             </div>
-            <div id="step-2" class="modal-step">
-                <h3>Cargar Archivos de Audio</h3>
-                <div class="form-grid">
+
+            <div class="modal-step" id="step-2">
+                <div class="modal-header">
+                    <h2>Cargar Audios (Paso 2 de 2)</h2>
+                    <span class="close-modal-btn" onclick="cerrarModalNuevoChart()">✕</span>
+                </div>
+                <div class="modal-body">
                     <div class="form-group">
-                        <label>Selecciona tu inst.ogg *</label>
-                        <div class="file-input-wrapper"><span class="file-label-text" id="label-inst">Ninguno</span><span class="file-btn-mock">Buscar</span><input type="file" id="file-inst" accept=".ogg" onchange="actualizarNombreArchivo('file-inst', 'label-inst')"></div>
+                        <label>tu inst.ogg (Obligatorio)</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-label-text" id="label-inst">Ninguno</span>
+                            <span class="file-btn-mock">Buscar</span>
+                            <input type="file" id="file-inst" accept=".ogg" onchange="actualizarNombreArchivo('file-inst', 'label-inst')">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>tu voice1.ogg (Jugador)</label>
-                        <div class="file-input-wrapper"><span class="file-label-text" id="label-voice1">Ninguno</span><span class="file-btn-mock">Buscar</span><input type="file" id="file-inst-v1" accept=".ogg" onchange="actualizarNombreArchivo('file-inst-v1', 'label-voice1')"></div>
+                        <label>tu voice1.ogg (Jugador - Opcional)</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-label-text" id="label-voice1">Ninguno</span>
+                            <span class="file-btn-mock">Buscar</span>
+                            <input type="file" id="file-inst-v1" accept=".ogg" onchange="actualizarNombreArchivo('file-inst-v1', 'label-voice1')">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>tu voice2.ogg (Enemigo)</label>
-                        <div class="file-input-wrapper"><span class="file-label-text" id="label-voice2">Ninguno</span><span class="file-btn-mock">Buscar</span><input type="file" id="file-inst-v2" accept=".ogg" onchange="actualizarNombreArchivo('file-inst-v2', 'label-voice2')"></div>
+                        <label>tu voice2.ogg (Enemigo - Opcional)</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-label-text" id="label-voice2">Ninguno</span>
+                            <span class="file-btn-mock">Buscar</span>
+                            <input type="file" id="file-inst-v2" accept=".ogg" onchange="actualizarNombreArchivo('file-inst-v2', 'label-voice2')">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-buttons">
